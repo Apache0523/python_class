@@ -1,5 +1,10 @@
 import redis
-pool = redis.ConnectionPool(host='192.168.4.128',port=6379,password='123456')
-r = redis.Redis(connection_pool=pool)
-r.set('name', 'xulin5')
-print(r.get('name'))
+
+r = redis.StrictRedis(host='127.0.0.1', port=6379, password='root')
+r.set('foo', 'hello')
+r.rpush('mylist', 'one')
+print(r.get('foo'))
+print(r.rpop('mylist'))
+
+
+
